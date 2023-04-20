@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Search for Information</h1>
+	<form action="search.php" method="get">
+		<label for="search">Search:</label>
+		<input type="text" name="search" id="search" required>
+		<input type="submit" value="Search">
+	</form>
+	
+	<?php
+		if(isset($_GET['search'])) {
+			$search = $_GET['search'];
+			
+			// code to search for information based on the user's input
+			
+			// sample data for the table
+			$results = array(
+				array("Title 1", "Description 1"),
+				array("Title 2", "Description 2"),
+				array("Title 3", "Description 3")
+			);
+			
+			if(count($results) > 0) {
+				echo "<h2>Search Results:</h2>";
+				echo "<table>";
+				echo "<thead><tr><th>Title</th><th>Description</th></tr></thead>";
+				echo "<tbody>";
+				foreach($results as $result) {
+					echo "<tr>";
+					echo "<td>".$result[0]."</td>";
+					echo "<td>".$result[1]."</td>";
+					echo "</tr>";
+				}
+				echo "</tbody>";
+				echo "</table>";
+			} else {
+				echo "<p>No results found.</p>";
+			}
+		}
+	?>
+</body>
+</html>
